@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABLE Partners - Team ABLE</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' ry='20' fill='%235d42a0'/%3E%3Ctext x='50%' y='65%' dominant-baseline='middle' text-anchor='middle' font-family='Poppins, sans-serif' font-size='60' fill='%23ffffff'%3EA%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+</head>
+<body class="animated-background">
+    <header>
+        <div class="container header-content">
+            <div class="logo">ABLE partners</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mission.html">Mission S-B-S</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Partners</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="able.html">Team ABLE</a></li>
+                            <li><a href="reddot.html">RED DOT</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger-menu" id="hamburger-icon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="mobile-nav-overlay" id="mobile-nav">
+        <ul>
+            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="mission.html" class="mobile-nav-link">Mission S-B-S</a></li>
+            <li class="mobile-dropdown-toggle">
+                <a href="#" class="mobile-nav-link">Partners <span class="arrow-down"></span></a>
+                <ul class="mobile-dropdown-menu">
+                    <li><a href="able.html" class="mobile-nav-link sub-link">Team ABLE</a></li>
+                    <li><a href="reddot.html" class="mobile-nav-link sub-link">RED DOT</a></li>
+                </ul>
+            </li>
+            <li><a href="projects.html" class="mobile-nav-link">Projects</a></li>
+            <li><a href="privacy.html" class="mobile-nav-link">Privacy Policy</a></li>
+            <li><button class="btn primary-btn mobile-contact-btn">Contact Us</button></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="able-hero-section hero-section">
+            <div class="container hero-content-wrapper single-column">
+                <div class="hero-text-block">
+                    <h1 class="able-page-main-header">Statement from Team ABLE</h1>
+                    <p class="able-sub-header">Building and Deploying Products Utilizing Latest AI Models.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="able-content-box principles-section">
+            <div class="container">
+                <h3 class="section-part-title">Leul Esubalew, Team ABLE</h3>
+                <div class="able-text-block principles-content">
+                    <p>
+                        At ABLE Partners, we are committed to Building and Deploying Products Utilizing latest AI models—ensuring that businesses of all sizes can leverage the power of automation to drive sustainable growth and operational efficiency. We believe innovation should be inclusive, empowering organizations regardless of their size or available resources.
+                    </p>
+                    <p>
+                        On a personal level, I am deeply passionate about creating user experiences that feel intuitive and welcoming—experiences that build trust through thoughtful design and authentic expression.
+                    </p>
+                    <p>
+                        Our partnership with Mr. Rick has the potential to be transformative for both myself and my co-founder, Abraham. As university students just beginning our journey in the business and creative industries, we see tremendous value in learning from someone with Mr. Rick’s depth of experience. His mentorship and guidance could be a vital force in shaping our growth, both professionally and personally, as we work to build impactful, purpose-driven ventures.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="able-content-box principles-section">
+            <div class="container">
+                <h3 class="section-part-title">Abraham Mulualem, Team ABLE</h3>
+                <div class="able-text-block principles-content">
+                    <p>
+                        I believe that exceptional talent and groundbreaking ideas should always find their platform, regardless of background or current economic standing. In a world where digital opportunities can often be unevenly distributed, my mission is to level the playing field, ensuring that every business and individual can harness the power of advanced solutions to achieve their goals. This is about more than just technology; it's about fostering genuinely equitable partnerships and empowering everyone to thrive.
+                    </p>
+                    <p>
+                        My work with ABLE is a testament to this philosophy, and our partnership with RED DOT exemplifies how true collaboration can unlock extraordinary potential. We don't just deliver services; we build relationships rooted in mutual respect and a shared vision for innovation. By focusing on transparent structures and inviting active involvement, we ensure that the value created is truly shared, fostering an environment where ideas flourish, and success is a collective achievement.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 All Rights Reserved by ABLE Partners - An Innovative Collaboration From Team ABLE & RED DOT.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle (retained from index.html)
+        const hamburger = document.getElementById('hamburger-icon');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        const mobileDropdownToggle = document.querySelector('.mobile-dropdown-toggle > .mobile-nav-link');
+        const mobileDropdownMenu = document.querySelector('.mobile-dropdown-menu');
+
+        function toggleMobileNav() {
+            mobileNav.classList.toggle('open');
+            hamburger.classList.toggle('active');
+            if (mobileNav.classList.contains('open')) {
+                document.body.style.overflowY = 'hidden';
+            } else {
+                document.body.style.overflowY = 'auto';
+            }
+        }
+
+        hamburger.addEventListener('click', toggleMobileNav);
+
+        mobileNavLinks.forEach(link => {
+            if (!link.classList.contains('dropdown-toggle')) {
+                link.addEventListener('click', () => {
+                    if (mobileNav.classList.contains('open')) {
+                        toggleMobileNav();
+                    }
+                });
+            }
+        });
+
+        if (mobileDropdownToggle) {
+            mobileDropdownToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                mobileDropdownMenu.classList.toggle('open');
+                mobileDropdownToggle.querySelector('.arrow-down').classList.toggle('rotate');
+            });
+        }
+
+        // --- Team ABLE Page Specific Animations ---
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Section Header & Sub-header
+        gsap.from(".able-hero-section .able-page-main-header", {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: "power3.out",
+            delay: 0.3
+        });
+
+        gsap.from(".able-hero-section .able-sub-header", {
+            opacity: 0,
+            y: 30,
+            duration: 1,
+            ease: "power2.out",
+            delay: 0.6
+        });
+
+        // Content Boxes (Fade in and slide up)
+        gsap.utils.toArray(".able-content-box").forEach((box, i) => {
+            gsap.from(box, {
+                opacity: 0,
+                y: 50,
+                scale: 0.95,
+                duration: 1,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: box,
+                    start: "top 85%",
+                    toggleActions: "play none none none",
+                    once: true,
+                },
+                delay: i * 0.2
+            });
+
+            // Animate titles and paragraphs inside each box
+            gsap.from(box.querySelector(".section-part-title"), {
+                opacity: 0,
+                y: 30,
+                duration: 0.8,
+                ease: "power1.out",
+                scrollTrigger: {
+                    trigger: box,
+                    start: "top 80%",
+                    toggleActions: "play none none none",
+                    once: true,
+                },
+                delay: i * 0.2 + 0.3
+            });
+
+            gsap.utils.toArray(box.querySelectorAll(".able-text-block p")).forEach((textElement, j) => {
+                gsap.from(textElement, {
+                    opacity: 0,
+                    y: 20,
+                    duration: 0.7,
+                    ease: "power1.out",
+                    scrollTrigger: {
+                        trigger: textElement,
+                        start: "top 95%",
+                        toggleActions: "play none none none",
+                        once: true,
+                    },
+                    delay: i * 0.2 + 0.5 + (j * 0.1)
+                });
+            });
+        });
+    </script>
+</body>
+</html>
