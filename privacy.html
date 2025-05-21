@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABLE Partners - Privacy Policy</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body class="animated-background">
+    <header>
+        <div class="container header-content">
+            <div class="logo">ABLE partners</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mission.html">Mission S-B-S</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Partners</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Team ABLE</a></li>
+                            <li><a href="reddot.html">RED DOT</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger-menu" id="hamburger-icon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="mobile-nav-overlay" id="mobile-nav">
+        <ul>
+            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="mission.html" class="mobile-nav-link">Mission S-B-S</a></li>
+            <li class="mobile-dropdown-toggle">
+                <a href="#" class="mobile-nav-link">Partners <span class="arrow-down"></span></a>
+                <ul class="mobile-dropdown-menu">
+                    <li><a href="#" class="mobile-nav-link sub-link">Team ABLE</a></li>
+                    <li><a href="reddot.html" class="mobile-nav-link sub-link">RED DOT</a></li>
+                </ul>
+            </li>
+            <li><a href="projects.html" class="mobile-nav-link">Projects</a></li>
+            <li><a href="privacy.html" class="mobile-nav-link">Privacy Policy</a></li>
+            <li><button class="btn primary-btn mobile-contact-btn">Contact Us</button></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="privacy-hero-section hero-section">
+            <div class="container hero-content-wrapper single-column">
+                <div class="hero-text-block">
+                    <h1 class="privacy-page-main-header">Privacy Policy</h1>
+                    <p class="privacy-sub-header">Our Commitment to Transparency, Trust, and Ethical Responsibility.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mission-content-box principles-section">
+            <div class="container">
+                <h3 class="section-part-title">Your Privacy Matters to Us</h3>
+                <div class="privacy-text-block principles-content">
+                    <h4>Our Commitment to Privacy</h4>
+                    <p>
+                        At Able Partners, we respect your privacy and are committed to protecting the information you share with us. Our approach is guided by transparency, trust, and ethical responsibility.
+                    </p>
+
+                    <h4>Information We Collect</h4>
+                    <p>
+                        We collect only the essential information needed to operate and improve our services—such as your name, email address, and general website usage data.
+                    </p>
+
+                    <h4>Use of Your Information</h4>
+                    <p>
+                        Your data is used to personalize your experience, respond to inquiries, and keep you informed if you’ve opted in. It helps us improve our services and build better digital tools.
+                    </p>
+
+                    <h4>Our Promise: No Sharing or Selling</h4>
+                    <p>
+                        We do not sell, rent, or share your personal information with third parties. Your data is never used for advertising or given away without your consent.
+                    </p>
+
+                    <h4>Data Security</h4>
+                    <p>
+                        We use secure systems and practices to protect your data from unauthorized access, misuse, or loss. We treat your information with the same care we expect for our own.
+                    </p>
+
+                    <h4>Your Control</h4>
+                    <p>
+                        You can request to access, correct, or delete your personal information at any time by contacting us. Your privacy choices will always be respected.
+                    </p>
+
+                    <h4>Updates to This Policy</h4>
+                    <p>
+                        If our policy changes, we’ll update this page. Continued use of our services means you accept the revised terms.
+                    </p>
+
+                    <h4>Contact Us</h4>
+                    <p>
+                        If you have any questions or concerns, please reach out to us at <a href="mailto:support@ablepartners.sbs">support@ablepartners.sbs</a>.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 All Rights Reserved by ABLE Partners - An Innovative Collaboration From Team ABLE & RED DOT.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle (retained from index.html)
+        const hamburger = document.getElementById('hamburger-icon');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        const mobileDropdownToggle = document.querySelector('.mobile-dropdown-toggle > .mobile-nav-link');
+        const mobileDropdownMenu = document.querySelector('.mobile-dropdown-menu');
+
+        function toggleMobileNav() {
+            mobileNav.classList.toggle('open');
+            hamburger.classList.toggle('active');
+            if (mobileNav.classList.contains('open')) {
+                document.body.style.overflowY = 'hidden';
+            } else {
+                document.body.style.overflowY = 'auto';
+            }
+        }
+
+        hamburger.addEventListener('click', toggleMobileNav);
+
+        mobileNavLinks.forEach(link => {
+            if (!link.classList.contains('dropdown-toggle')) {
+                link.addEventListener('click', () => {
+                    if (mobileNav.classList.contains('open')) {
+                        toggleMobileNav();
+                    }
+                });
+            }
+        });
+
+        if (mobileDropdownToggle) {
+            mobileDropdownToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                mobileDropdownMenu.classList.toggle('open');
+                mobileDropdownToggle.querySelector('.arrow-down').classList.toggle('rotate');
+            });
+        }
+
+        // --- Privacy Policy Page Specific Animations ---
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Section Header & Sub-header
+        gsap.from(".privacy-hero-section .privacy-page-main-header", {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: "power3.out",
+            delay: 0.3
+        });
+
+        gsap.from(".privacy-hero-section .privacy-sub-header", {
+            opacity: 0,
+            y: 30,
+            duration: 1,
+            ease: "power2.out",
+            delay: 0.6
+        });
+
+        // Content Box (Fade in and slide up)
+        gsap.from(".mission-content-box", {
+            opacity: 0,
+            y: 50,
+            scale: 0.95,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+                trigger: ".mission-content-box",
+                start: "top 85%",
+                toggleActions: "play none none none",
+                once: true,
+            },
+            delay: 0.5
+        });
+
+        // Animate titles and paragraphs inside the content box
+        gsap.from(".mission-content-box .section-part-title", {
+            opacity: 0,
+            y: 30,
+            duration: 0.8,
+            ease: "power1.out",
+            scrollTrigger: {
+                trigger: ".mission-content-box",
+                start: "top 80%",
+                toggleActions: "play none none none",
+                once: true,
+            },
+            delay: 0.8
+        });
+
+        gsap.utils.toArray(".privacy-text-block h4, .privacy-text-block p").forEach((textElement, j) => {
+            gsap.from(textElement, {
+                opacity: 0,
+                y: 20,
+                duration: 0.7,
+                ease: "power1.out",
+                scrollTrigger: {
+                    trigger: textElement,
+                    start: "top 95%",
+                    toggleActions: "play none none none",
+                    once: true,
+                },
+                delay: 1.0 + (j * 0.1)
+            });
+        });
+    </script>
+</body>
+</html>
