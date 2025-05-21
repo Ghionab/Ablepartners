@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABLE Partners - RED DOT</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body class="animated-background">
+    <header>
+        <div class="container header-content">
+            <div class="logo">ABLE partners</div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="mission.html">Mission S-B-S</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">Partners</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Team ABLE</a></li>
+                            <li><a href="reddot.html">RED DOT</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="projects.html">Projects</a></li> <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+            <div class="hamburger-menu" id="hamburger-icon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="mobile-nav-overlay" id="mobile-nav">
+        <ul>
+            <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+            <li><a href="mission.html" class="mobile-nav-link">Mission S-B-S</a></li>
+            <li class="mobile-dropdown-toggle">
+                <a href="#" class="mobile-nav-link">Partners <span class="arrow-down"></span></a>
+                <ul class="mobile-dropdown-menu">
+                    <li><a href="#" class="mobile-nav-link sub-link">Team ABLE</a></li>
+                    <li><a href="reddot.html" class="mobile-nav-link sub-link">RED DOT</a></li>
+                </ul>
+            </li>
+            <li><a href="projects.html" class="mobile-nav-link">Projects</a></li> <li><a href="#" class="mobile-nav-link">About</a></li>
+            <li><button class="btn primary-btn mobile-contact-btn">Contact Us</button></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="reddot-hero-section hero-section">
+            <div class="container hero-content-wrapper single-column">
+                <div class="hero-text-block">
+                    <h1 class="reddot-page-main-header">Statement from Rick DaCosta, RED DOT Company Inc.</h1>
+                    <p class="reddot-sub-header">Discovering superior ethical and moral models for cross-border digital collaboration.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="reddot-content-box principles-section">
+            <div class="container">
+                <h3 class="section-part-title">Our Commitment to Fair Collaboration</h3>
+                <div class="reddot-text-block principles-content">
+                    <p>
+                        At RED DOT, we are deeply committed to discovering superior ethical and moral models for cross-border digital collaboration.
+                        In a world where social and economic disparity too often drives exploitation, we aim for a different standard.
+                        We make no assumptions about the superiority of any background—social, cultural, or economic.
+                        But we are keenly aware that the dynamics of the current freelance ecosphere tend to reward a lucky few while marginalizing the majority of IT worldwide.
+                    </p>
+                    <p>
+                        This is especially true in the gig economy. Exceptional talents in economically developing regions frequently remain undercompensated, not for lack of skill, but because of systemic inequities in the marketplace for IT services.
+                        At RED DOT, we work with people whose values, vision, and talent align with ours. We offer them not just a wage but an invitation to join in lasting value creation.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="reddot-content-box principles-section">
+            <div class="container">
+                <h3 class="section-part-title">Structuring Partnerships for Shared Success</h3>
+                <div class="reddot-text-block principles-content">
+                    <p>
+                        When launching a project, we begin with a fair hourly rate and a clear contract.
+                        But we also make a standing offer: contributors may convert that agreement into equity in the very project they helped bring to life.
+                        They are given the time and space to see whether the project’s commercial potential aligns with their goals and economic aspirations.
+                    </p>
+                    <p>
+                        This is exactly how we have structured ABLE Partners. Working with Leul Esubalew & Abraham Mulualem is both inspiring and surprisingly productive.
+                        Their ideas often expand our projects’ impact and their technical proficiency in AI, IT, and digital production has quickly converted concepts into reality by creatively using our selected platforms beyond their design expectations!
+                    </p>
+                    <p>
+                        For RED DOT, we encourage involvement at the outset in projects that early on focus on revenue generation.
+                        Our joint ventures begin with affiliate marketing sites—a space where measurable returns are possible in the short term, even as we build toward a plan for developing our own SaaS platforms as partners.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 All Rights Reserved by ABLE Partners - An Innovative Collaboration From Team ABLE & RED DOT.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle (retained from index.html)
+        const hamburger = document.getElementById('hamburger-icon');
+        const mobileNav = document.getElementById('mobile-nav');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        const mobileDropdownToggle = document.querySelector('.mobile-dropdown-toggle > .mobile-nav-link');
+        const mobileDropdownMenu = document.querySelector('.mobile-dropdown-menu');
+
+        function toggleMobileNav() {
+            mobileNav.classList.toggle('open');
+            hamburger.classList.toggle('active');
+            if (mobileNav.classList.contains('open')) {
+                document.body.style.overflowY = 'hidden';
+            } else {
+                document.body.style.overflowY = 'auto';
+            }
+        }
+
+        hamburger.addEventListener('click', toggleMobileNav);
+
+        mobileNavLinks.forEach(link => {
+            if (!link.classList.contains('dropdown-toggle')) {
+                link.addEventListener('click', () => {
+                    if (mobileNav.classList.contains('open')) {
+                        toggleMobileNav();
+                    }
+                });
+            }
+        });
+
+        if (mobileDropdownToggle) {
+            mobileDropdownToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                mobileDropdownMenu.classList.toggle('open');
+                mobileDropdownToggle.querySelector('.arrow-down').classList.toggle('rotate');
+            });
+        }
+
+        // --- RED DOT Page Specific Animations ---
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Section Header & Sub-header
+        gsap.from(".reddot-hero-section .reddot-page-main-header", {
+            opacity: 0,
+            y: 50,
+            duration: 1,
+            ease: "power3.out",
+            delay: 0.3
+        });
+
+        gsap.from(".reddot-hero-section .reddot-sub-header", {
+            opacity: 0,
+            y: 30,
+            duration: 1,
+            ease: "power2.out",
+            delay: 0.6
+        });
+
+        // Content Boxes (Fade in and slide up)
+        gsap.utils.toArray(".reddot-content-box").forEach((box, i) => {
+            gsap.from(box, {
+                opacity: 0,
+                y: 50,
+                scale: 0.95,
+                duration: 1,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: box,
+                    start: "top 85%",
+                    toggleActions: "play none none none",
+                    once: true,
+                },
+                delay: i * 0.2
+            });
+
+            // Animate titles and paragraphs inside each box
+            gsap.from(box.querySelector(".section-part-title"), {
+                opacity: 0,
+                y: 30,
+                duration: 0.8,
+                ease: "power1.out",
+                scrollTrigger: {
+                    trigger: box,
+                    start: "top 80%",
+                    toggleActions: "play none none none",
+                    once: true,
+                },
+                delay: i * 0.2 + 0.3
+            });
+
+            gsap.utils.toArray(box.querySelectorAll(".reddot-text-block p")).forEach((textElement, j) => {
+                gsap.from(textElement, {
+                    opacity: 0,
+                    y: 20,
+                    duration: 0.7,
+                    ease: "power1.out",
+                    scrollTrigger: {
+                        trigger: textElement,
+                        start: "top 95%",
+                        toggleActions: "play none none none",
+                        once: true,
+                    },
+                    delay: i * 0.2 + 0.5 + (j * 0.1)
+                });
+            });
+        });
+    </script>
+</body>
+</html>
