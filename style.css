@@ -1,0 +1,1212 @@
+/* --- Variables (Easier to manage colors) --- */
+:root {
+    --primary-color: #5d42a0; /* A rich purple */
+    --secondary-color: #8c71d1; /* Lighter purple */
+    --accent-color: #a788e0; /* Even lighter for highlights */
+    --dark-text: #2c2c3e;
+    --light-text: #6a6a8a;
+    --background-light: #f8f8fc;
+    --background-medium: #eaeaef;
+    --card-background: #ffffff;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    --footer-bg: #2c2c3e; /* Dark background for footer */
+    --footer-text: #e0e0e0; /* Light text for footer */
+}
+
+/* Universal Styles & Body */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: var(--dark-text);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll on animations */
+    background-color: var(--background-light); /* Default background */
+}
+
+/* Animated Background (Body) */
+.animated-background {
+    background: linear-gradient(135deg, var(--background-light) 0%, var(--background-medium) 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto; /* Center the container */
+}
+
+/* Header & Navigation */
+header {
+    background-color: var(--card-background);
+    padding: 15px 0;
+    box-shadow: 0 4px 15px var(--shadow-light); /* Stronger header shadow */
+    position: sticky; /* Make header sticky */
+    top: 0;
+    z-index: 1000; /* Ensure it's on top */
+    transition: background-color 0.3s ease;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between; /* Keeps logo left, nav/dropdowns right */
+    align-items: center;
+    padding-right: 20px; /* **Adjusted: Shift content slightly right by adding padding** */
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--primary-color);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+.main-nav {
+    display: block;
+    margin-left: auto; /* Push nav to the right */
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.main-nav li {
+    margin-right: 40px;
+}
+
+.main-nav li:last-child {
+    margin-right: 0; /* No margin on the last item */
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--light-text);
+    font-size: 17px;
+    font-weight: 600;
+    position: relative;
+    transition: color 0.3s ease;
+    padding: 5px 0; /* Add padding for better click area */
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: var(--primary-color);
+    left: 50%;
+    bottom: -8px;
+    transform: translateX(-50%);
+    transition: width 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.main-nav a:hover {
+    color: var(--primary-color);
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+/* Dropdown Menu (Desktop) */
+.dropdown {
+    position: relative;
+    display: inline-block; /* Allows dropdown to position relative to this */
+}
+
+.dropdown-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: var(--card-background);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 8px;
+    padding: 10px 0;
+    top: 100%; /* Position below the toggle */
+    left: 50%;
+    transform: translateX(-50%); /* Center the dropdown */
+    margin-top: 10px; /* Space from parent link */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown-menu li {
+    margin: 0; /* Remove horizontal margin */
+}
+
+.dropdown-menu a {
+    color: var(--dark-text);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-weight: 400; /* Lighter font for sub-links */
+    font-size: 16px;
+}
+
+.dropdown-menu a:hover {
+    background-color: var(--background-medium);
+    color: var(--primary-color);
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block; /* Show on hover */
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0); /* Reset transform on hover */
+}
+
+
+/* Hamburger Menu Icon */
+.hamburger-menu {
+    width: 30px;
+    height: 20px;
+    display: none; /* Hidden by default, shown on mobile */
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 1001; /* Above header */
+    transition: transform 0.3s ease;
+}
+
+.hamburger-menu .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--dark-text);
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger active state (for X animation) */
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile Navigation Overlay */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%);
+    transition: transform 0.4s ease-in-out;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+.mobile-nav-overlay.open {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav-overlay ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    width: 80%;
+}
+
+.mobile-nav-overlay li {
+    margin-bottom: 30px;
+}
+
+.mobile-nav-overlay a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    display: block;
+    padding: 10px 0;
+}
+
+.mobile-nav-overlay a:hover {
+    color: var(--accent-color);
+}
+
+/* Mobile Dropdown Specifics */
+.mobile-dropdown-toggle {
+    position: relative;
+}
+
+.mobile-dropdown-toggle .arrow-down {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #ffffff;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+.mobile-dropdown-toggle .arrow-down.rotate {
+    transform: rotate(180deg);
+}
+
+.mobile-dropdown-menu {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0;
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly transparent background for submenu */
+    border-radius: 8px;
+    max-height: 0; /* Hidden by default */
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+
+.mobile-dropdown-menu.open {
+    max-height: 200px; /* Adjust as needed to fit content */
+}
+
+.mobile-dropdown-menu li {
+    margin-bottom: 0; /* Remove extra margin for sub-items */
+}
+
+.mobile-dropdown-menu a.sub-link {
+    font-size: 22px; /* Smaller font for sub-links */
+    padding: 12px 0;
+    color: #ffffff;
+    opacity: 0.8;
+}
+
+.mobile-dropdown-menu a.sub-link:hover {
+    opacity: 1;
+    color: var(--accent-color);
+}
+
+
+.mobile-contact-btn {
+    width: 100%;
+    margin-top: 20px;
+    background-image: linear-gradient(45deg, #ffffff 0%, #f0f0f0 100%);
+    color: var(--primary-color);
+}
+
+.mobile-contact-btn:hover {
+    background-image: linear-gradient(45deg, #f0f0f0 0%, #e0e0e0 100%);
+    color: var(--primary-color);
+}
+
+
+/* Buttons (General) */
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 700;
+    box-shadow: 0 4px 15px var(--shadow-light);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    background-image: linear-gradient(45deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+}
+
+.primary-btn:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px var(--shadow-medium);
+    background-image: linear-gradient(45deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+}
+
+/* Hero Section (General) */
+.hero-section {
+    padding-top: 80px; /* Adjusted: Reduced top padding for "above the fold" */
+    padding-bottom: 120px;
+    background-color: transparent;
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content-wrapper.single-column {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+}
+
+.hero-text-block {
+    flex: unset;
+    max-width: 900px;
+    padding-right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.hero-text-block h1 {
+    font-size: 64px;
+    font-weight: 800;
+    color: var(--dark-text);
+    margin-bottom: 25px;
+    line-height: 1.1;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+    overflow: hidden;
+}
+
+.hero-text-block h1 .word-reveal {
+    display: inline-block;
+}
+
+.hero-text-block p {
+    font-size: 20px;
+    color: var(--light-text);
+    margin-bottom: 50px;
+    max-width: 700px;
+    line-height: 1.7;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-btn {
+    padding: 18px 45px;
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+/* Principles Section (Used for box styling) */
+.principles-section {
+    background-color: var(--card-background);
+    padding: 80px 0;
+    margin-bottom: 100px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-medium);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1000px;
+    width: 90%;
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.principles-heading {
+    font-size: 40px;
+    font-weight: 800;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.principles-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.principles-paragraph {
+    font-size: 19px;
+    color: var(--dark-text);
+    line-height: 1.8;
+    margin-bottom: 35px;
+    font-weight: 400;
+}
+
+.principles-paragraph:last-child {
+    margin-bottom: 0;
+}
+
+
+/* Objectives Section */
+.objectives-section {
+    padding: 80px 0;
+    background-color: var(--background-light);
+    text-align: center;
+}
+
+.objectives-heading {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 60px;
+}
+
+.objectives-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.objective-item {
+    flex: 1;
+    min-width: 280px;
+    max-width: 350px;
+    background-color: var(--card-background);
+    padding: 40px 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px var(--shadow-light);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.objective-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 35px var(--shadow-medium);
+}
+
+.objective-icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.objective-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke-width: 2;
+}
+
+.objective-text {
+    font-size: 18px;
+    color: var(--dark-text);
+    line-height: 1.6;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* --- New & Adjusted Styles for Mission Page --- */
+
+/* Mission Page Hero Section */
+.mission-hero-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-color: transparent;
+    text-align: center;
+}
+
+.mission-hero-section .hero-text-block {
+    max-width: 800px;
+}
+
+.mission-hero-section .mission-page-main-header {
+    font-size: 58px;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    line-height: 1.1;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+}
+
+.mission-hero-section .mission-sub-header {
+    font-size: 22px;
+    color: var(--dark-text);
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 600;
+}
+
+/* Mission Content Boxes (now explicitly using principles-section-like styles) */
+.mission-content-box {
+    background-color: var(--card-background);
+    padding: 80px 0;
+    margin-bottom: 100px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-medium);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1000px;
+    width: 90%;
+}
+
+.mission-content-box .container {
+    /* Ensures content inside the box adheres to the container width */
+}
+
+
+.mission-text-block {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.mission-text-block p {
+    font-size: 18px;
+    color: var(--dark-text);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.mission-text-block p:last-child {
+    margin-bottom: 0;
+}
+
+.section-part-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+/* List styling for the bullet points in the second part */
+.mission-text-block ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+.mission-text-block ul li {
+    font-size: 18px;
+    color: var(--dark-text);
+    line-height: 1.6;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+}
+.mission-text-block ul li::before {
+    content: '•';
+    color: var(--primary-color);
+    font-size: 1.2em;
+    position: absolute;
+    left: 0;
+    top: 0;
+    line-height: inherit;
+    font-weight: bold;
+}
+
+/* --- New Styles for RED DOT Page --- */
+.reddot-hero-section {
+    padding-top: 80px; /* Consistent with other hero sections */
+    padding-bottom: 80px;
+    background-color: transparent;
+    text-align: center;
+}
+
+.reddot-hero-section .hero-text-block {
+    max-width: 900px; /* Allow more width for the long title */
+}
+
+.reddot-hero-section .reddot-page-main-header {
+    font-size: 58px;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    line-height: 1.1;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+}
+
+.reddot-hero-section .reddot-sub-header {
+    font-size: 22px;
+    color: var(--dark-text);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 600;
+}
+
+.reddot-content-box {
+    /* Inherits from .principles-section-like styling */
+    background-color: var(--card-background);
+    padding: 80px 0;
+    margin-bottom: 100px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-medium);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1000px;
+    width: 90%;
+}
+
+.reddot-text-block {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.reddot-text-block p {
+    font-size: 18px;
+    color: var(--dark-text);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+.reddot-text-block p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* --- New Styles for Projects Page --- */
+.projects-hero-section {
+    padding-top: 80px;
+    padding-bottom: 80px;
+    background-color: transparent;
+    text-align: center;
+}
+
+.projects-hero-section .hero-text-block {
+    max-width: 900px;
+}
+
+.projects-hero-section .projects-page-main-header {
+    font-size: 58px;
+    font-weight: 800;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    line-height: 1.1;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+}
+
+.projects-hero-section .projects-sub-header {
+    font-size: 22px;
+    color: var(--dark-text);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+    font-weight: 600;
+}
+
+.projects-content-box {
+    background-color: var(--card-background);
+    padding: 80px 0;
+    margin-bottom: 100px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow-medium);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1000px;
+    width: 90%;
+}
+
+.projects-text-block {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.projects-text-block p {
+    font-size: 18px;
+    color: var(--dark-text);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+.projects-text-block p:last-child {
+    margin-bottom: 0;
+}
+
+.projects-text-block h4 {
+    font-size: 22px;
+    color: var(--primary-color);
+    margin-top: 35px;
+    margin-bottom: 15px;
+}
+
+.projects-text-block ul,
+.projects-text-block ol {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.projects-text-block ul li,
+.projects-text-block ol li {
+    font-size: 18px;
+    color: var(--dark-text);
+    line-height: 1.6;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 25px;
+}
+
+.projects-text-block ul li::before {
+    content: '•';
+    color: var(--primary-color);
+    font-size: 1.2em;
+    position: absolute;
+    left: 0;
+    top: 0;
+    line-height: inherit;
+    font-weight: bold;
+}
+
+.projects-text-block ol li::before {
+    content: counter(list-item) ". ";
+    counter-increment: list-item;
+    color: var(--primary-color);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+    line-height: inherit;
+}
+
+.projects-text-block ul li a,
+.projects-text-block ol li a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.projects-text-block ul li a:hover,
+.projects-text-block ol li a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+
+/* Footer Styles */
+footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    padding: 30px 0;
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.5;
+    box-shadow: 0 -4px 15px rgba(0,0,0,0.1); /* Subtle top shadow */
+}
+
+footer p {
+    margin: 0;
+    max-width: 800px; /* Constrain footer text width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Media Queries for Responsiveness */
+
+/* Large Tablets and Laptops (1024px) */
+@media (max-width: 1024px) {
+    .hero-section {
+        padding-top: 60px;
+        padding-bottom: 100px;
+    }
+    .hero-text-block h1 {
+        font-size: 50px;
+    }
+    .hero-text-block p {
+        font-size: 19px;
+    }
+    .hero-btn {
+        font-size: 19px;
+    }
+    .principles-section {
+        padding: 60px 0;
+        margin-bottom: 80px;
+        width: 95%;
+    }
+    .principles-heading {
+        font-size: 36px;
+        margin-bottom: 40px;
+    }
+    .principles-content {
+        max-width: 90%;
+    }
+    .principles-paragraph {
+        font-size: 17px;
+        margin-bottom: 30px;
+    }
+    .objectives-section {
+        padding: 70px 0;
+    }
+    .objectives-heading {
+        font-size: 32px;
+        margin-bottom: 50px;
+    }
+    .objectives-list {
+        gap: 30px;
+    }
+    .objective-item {
+        min-width: 280px;
+        max-width: 45%;
+        padding: 35px 25px;
+    }
+    .objective-icon {
+        width: 45px;
+        height: 45px;
+        margin-bottom: 18px;
+    }
+    .objective-text {
+        font-size: 17px;
+    }
+
+    /* Mission Page specific responsiveness */
+    .mission-hero-section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    .mission-hero-section .mission-page-main-header {
+        font-size: 50px;
+    }
+    .mission-hero-section .mission-sub-header {
+        font-size: 20px;
+    }
+    .mission-content-box {
+        padding: 60px 0;
+        margin-bottom: 80px;
+    }
+    .section-part-title {
+        font-size: 28px;
+    }
+    .mission-text-block p, .mission-text-block ul li {
+        font-size: 17px;
+    }
+
+    /* RED DOT Page specific responsiveness */
+    .reddot-hero-section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    .reddot-hero-section .reddot-page-main-header {
+        font-size: 50px;
+    }
+    .reddot-hero-section .reddot-sub-header {
+        font-size: 20px;
+    }
+    .reddot-content-box {
+        padding: 60px 0;
+        margin-bottom: 80px;
+    }
+    .reddot-text-block p {
+        font-size: 17px;
+    }
+
+    /* Projects Page specific responsiveness */
+    .projects-hero-section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    .projects-hero-section .projects-page-main-header {
+        font-size: 50px;
+    }
+    .projects-hero-section .projects-sub-header {
+        font-size: 20px;
+    }
+    .projects-content-box {
+        padding: 60px 0;
+        margin-bottom: 80px;
+    }
+    .projects-text-block p,
+    .projects-text-block ul li,
+    .projects-text-block ol li {
+        font-size: 17px;
+    }
+    .projects-text-block h4 {
+        font-size: 20px;
+    }
+}
+
+/* Tablets (768px) */
+@media (max-width: 768px) {
+    .header-content {
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 15px; /* Adjust padding for mobile */
+    }
+    .main-nav, .desktop-btn {
+        display: none;
+    }
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .hero-section {
+        padding-top: 40px;
+        padding-bottom: 80px;
+    }
+    .hero-text-block h1 {
+        font-size: 40px;
+        margin-bottom: 20px;
+    }
+    .hero-text-block p {
+        font-size: 17px;
+        margin-bottom: 40px;
+    }
+    .hero-btn {
+        padding: 14px 30px;
+        font-size: 17px;
+    }
+
+    .principles-section {
+        padding: 50px 0;
+        margin-bottom: 60px;
+        width: 90%;
+    }
+    .principles-heading {
+        font-size: 30px;
+        margin-bottom: 35px;
+    }
+    .principles-content {
+        /* text-align: left; inherited */
+    }
+    .principles-paragraph {
+        font-size: 16px;
+        margin-bottom: 25px;
+    }
+
+    .objectives-section {
+        padding: 60px 0;
+    }
+    .objectives-heading {
+        font-size: 28px;
+        margin-bottom: 40px;
+    }
+    .objectives-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    .objective-item {
+        width: 90%;
+        max-width: 450px;
+        padding: 30px 25px;
+    }
+    .objective-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 15px;
+    }
+    .objective-text {
+        font-size: 16px;
+    }
+
+    /* Mission Page specific responsiveness */
+    .mission-hero-section {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .mission-hero-section .mission-page-main-header {
+        font-size: 40px;
+    }
+    .mission-hero-section .mission-sub-header {
+        font-size: 18px;
+    }
+    .mission-content-box {
+        padding: 50px 0;
+        margin-bottom: 60px;
+    }
+    .section-part-title {
+        font-size: 26px;
+    }
+    .mission-text-block p, .mission-text-block ul li {
+        font-size: 16px;
+    }
+
+    /* RED DOT Page specific responsiveness */
+    .reddot-hero-section {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .reddot-hero-section .reddot-page-main-header {
+        font-size: 40px;
+    }
+    .reddot-hero-section .reddot-sub-header {
+        font-size: 18px;
+    }
+    .reddot-content-box {
+        padding: 50px 0;
+        margin-bottom: 60px;
+    }
+    .reddot-text-block p {
+        font-size: 16px;
+    }
+
+    /* Projects Page specific responsiveness */
+    .projects-hero-section {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+    .projects-hero-section .projects-page-main-header {
+        font-size: 40px;
+    }
+    .projects-hero-section .projects-sub-header {
+        font-size: 18px;
+    }
+    .projects-content-box {
+        padding: 50px 0;
+        margin-bottom: 60px;
+    }
+    .projects-text-block p,
+    .projects-text-block ul li,
+    .projects-text-block ol li {
+        font-size: 16px;
+    }
+    .projects-text-block h4 {
+        font-size: 18px;
+    }
+
+
+    footer {
+        padding: 25px 0;
+        font-size: 14px;
+    }
+}
+
+/* Mobile Phones (480px) */
+@media (max-width: 480px) {
+    .logo {
+        font-size: 26px;
+    }
+
+    .hero-section {
+        padding-top: 30px;
+        padding-bottom: 60px;
+    }
+    .hero-text-block h1 {
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+    .hero-text-block p {
+        font-size: 15px;
+        margin-bottom: 30px;
+    }
+    .hero-btn {
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+
+    .principles-section {
+        padding: 40px 0;
+        margin-bottom: 40px;
+    }
+    .principles-heading {
+        font-size: 26px;
+        margin-bottom: 25px;
+    }
+    .principles-content {
+        /* text-align: left; inherited */
+    }
+    .principles-paragraph {
+        font-size: 15px;
+        margin-bottom: 20px;
+    }
+
+    .objectives-section {
+        padding: 40px 0;
+    }
+    .objectives-heading {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+    .objective-item {
+        padding: 25px 20px;
+    }
+    .objective-icon {
+        width: 35px;
+        height: 35px;
+        margin-bottom: 10px;
+    }
+    .objective-text {
+        font-size: 15px;
+    }
+
+    /* Mission Page specific responsiveness */
+    .mission-hero-section {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .mission-hero-section .mission-page-main-header {
+        font-size: 30px;
+    }
+    .mission-hero-section .mission-sub-header {
+        font-size: 16px;
+    }
+    .mission-content-box {
+        padding: 40px 0;
+        margin-bottom: 40px;
+    }
+    .section-part-title {
+        font-size: 22px;
+    }
+    .mission-text-block p, .mission-text-block ul li {
+        font-size: 15px;
+    }
+
+    /* RED DOT Page specific responsiveness */
+    .reddot-hero-section {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .reddot-hero-section .reddot-page-main-header {
+        font-size: 30px;
+    }
+    .reddot-hero-section .reddot-sub-header {
+        font-size: 16px;
+    }
+    .reddot-content-box {
+        padding: 40px 0;
+        margin-bottom: 40px;
+    }
+    .reddot-text-block p {
+        font-size: 15px;
+    }
+
+    /* Projects Page specific responsiveness */
+    .projects-hero-section {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .projects-hero-section .projects-page-main-header {
+        font-size: 30px;
+    }
+    .projects-hero-section .projects-sub-header {
+        font-size: 16px;
+    }
+    .projects-content-box {
+        padding: 40px 0;
+        margin-bottom: 40px;
+    }
+    .projects-text-block p,
+    .projects-text-block ul li,
+    .projects-text-block ol li {
+        font-size: 15px;
+    }
+    .projects-text-block h4 {
+        font-size: 16px;
+    }
+
+
+    footer {
+        padding: 20px 0;
+        font-size: 13px;
+    }
+}
